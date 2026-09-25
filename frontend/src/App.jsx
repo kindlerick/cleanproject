@@ -1,30 +1,31 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-function Home() {
-  return <h1>Home</h1>
-}
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-function Login() {
-  return <h1>Login</h1>
-}
-
-function Register() {
-  return <h1>Register</h1>
-}
-
-function Profile() {
-  return <h1>Profile</h1>
-}
+import MainPage from "./pages/MainPage";
+import BlogPage from "./pages/BlogPage";
+import AboutPage from "./pages/AboutPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
     <BrowserRouter>
+
+    <Header />    
+
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/blogs" element={<BlogPage />} /> 
+        {/* <Route path="/login" element={<Login />} /> */}
+        {/* <Route path="/register" element={<Register />} /> */}
+        {/* <Route path="/profile" element={<Profile />} /> */}
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
+
+    <Footer />
+
     </BrowserRouter>
   )
 }
