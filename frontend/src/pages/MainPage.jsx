@@ -3,6 +3,9 @@
 function MainPage() {
     return (
         <>
+
+        <h1>MAIN PAGE</h1>
+        
             <div className="introduction">
                 <p>
                     Anything that comes to mind that's worthy

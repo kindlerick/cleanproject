@@ -1,36 +1,12 @@
-import { useParams } from "react-router-dom";
-
-import blogPosts from "../assets/data/blogPosts.json";
-
-
-function BlogPost( ) {
-
-    const { slug } = useParams();
-
-    function getBlogByslug(blogs, slug){
-        for (let blog of blogs) {
-            if (blog.slug === slug) {
-                return blog
-            }
-        }
-        
-    }
-
-    const blog = getBlogByslug(blogPosts, slug);
-
-    if (!blog) {
-        return <h1>Blog not found</h1>;
-    }
-
-
+function BlogPostCard({ title, category, excerpt }) {
     return (
-        <>
-        <div className="blogPost">
-            <h1>{blog.title}</h1>
-        </div>
-        </>
-    )
+        <article>
+            <h2>{title}</h2>
+            <p>{category}</p>
+            <p>{excerpt}</p>
+        </article>
+    );
 }
 
+export default BlogPostCard;
 
-export default BlogPost;
