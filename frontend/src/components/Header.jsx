@@ -31,17 +31,17 @@ function Header() {
                 </ol>
 
                 <ol className="nav-rightside">
-                    <li className="nav-element">
+                    {/* <li className="nav-element">
                         <a id="login">LOG IN</a>
                     </li>
 
                     <li className="nav-element">
                         <a id="register">REGISTER</a>
-                    </li>
+                    </li> */}
 
                     {location.pathname !== "/admin" && (
                         <li className="nav-element">
-                            <Link to="/admin">Admin</Link>
+                            <Link to="/admin">ADMIN</Link>
                         </li>
                     )}
                 </ol>
