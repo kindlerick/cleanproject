@@ -1,7 +1,13 @@
 import "../styles/admin.css";
 
 import { useEffect, useState } from "react";
-import { getPosts, createPost, updatePost } from "/src/services/postsAPI.js";
+
+import {
+    getPosts,
+    createPost,
+    updatePost,
+    deletePost
+} from "/src/services/postsAPI.js";
 
 
 
@@ -23,6 +29,21 @@ function AdminPage() {
         .catch((error) => console.error(error));
     }, []);
 
+    async function handleDelete(id) {
+        try {
+            await deletePost(id);
+
+            setPosts((currentPosts) =>
+                currentPosts.filter((post) => post.id !== id)
+            );
+
+            alert("Post deleted!");
+        } catch (error) {
+            console.error(error);
+            alert("Failed to delete post");
+        }
+    }
+
     async function handleSubmit(event) {
         event.preventDefault();
 
@@ -34,11 +55,18 @@ function AdminPage() {
         };
 
         try {
-            if (editingPost) {
-                await updatePost(editingPost.id, post);
-                alert("Post updated!");
-                setEditingPost(null);
-            } else {
+        if (editingPost) {
+            const updatedPost = await updatePost(editingPost.id, post);
+
+            setPosts((currentPosts) =>
+                currentPosts.map((post) =>
+                    post.id === updatedPost.id ? updatedPost : post
+                )
+            );
+
+            alert("Post updated!");
+            setEditingPost(null);
+        } else {
                 await createPost(post);
                 alert("Post created!");
             }
@@ -107,7 +135,13 @@ function AdminPage() {
                             setContent(post.content);
                         }}
                     >
-                        Edit
+                    Edit
+                    </button>
+
+                    <button
+                        onClick={() => handleDelete(post.id)}
+                    >
+                    Delete
                     </button>
                 </div>
             ))}
