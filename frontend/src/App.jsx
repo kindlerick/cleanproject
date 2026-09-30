@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage";
 import BlogPage from "./pages/BlogPage";
 import AboutPage from "./pages/AboutPage";
 import AdminPage from "./pages/AdminPage";
+import PostPage from "./pages/PostPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         {/* <Route path="/profile" element={<Profile />} /> */}
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/blog/:slug" element={<PostPage />} />
       </Routes>
 
     <Footer />
