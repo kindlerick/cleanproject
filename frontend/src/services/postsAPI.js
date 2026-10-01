@@ -13,6 +13,10 @@ export async function getPosts() {
 export async function getPostBySlug(slug) {
     const response = await fetch(`${API_URL}/${slug}`);
 
+    if (response.status === 404) {
+        throw new Error("Post not found");
+    }
+
     if (!response.ok) {
         throw new Error("Failed to fetch post");
     }
@@ -30,8 +34,8 @@ export async function createPost(post) {
     });
 
     if (!response.ok) {
-        throw new Error("Failed to create post");
-    }
+        const error = await response.json();
+        throw new Error(error.message);    }
 
     return response.json();
 }

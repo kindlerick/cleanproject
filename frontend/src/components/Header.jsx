@@ -17,9 +17,9 @@ function Header() {
                         </li>
                     )}
 
-                    {location.pathname !== "/blog" && (
+                    {location.pathname !== "/blogs" && (
                         <li className="nav-element">
-                            <Link to="/blog">BLOGS</Link>
+                            <Link to="/blogs">BLOGS</Link>
                         </li>
                     )}
 
