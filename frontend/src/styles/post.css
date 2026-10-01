@@ -1,0 +1,28 @@
+.post-page {
+    min-height: 500px;
+    padding: 5rem 4rem;
+}
+
+.post-page h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.post-page > p:first-of-type {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+
+.post-page > p:nth-of-type(2) {
+    max-width: 750px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+}
+
+.post-page a {
+    color: var(--accent-color);
+    font-weight: 600;
+}
