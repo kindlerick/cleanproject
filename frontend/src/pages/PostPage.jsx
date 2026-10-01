@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getPostBySlug } from "/src/services/postsAPI.js";
 import { Link, useParams } from "react-router-dom";
 
+import '../styles/post.css';
+
 function PostPage() {
     const { slug } = useParams();
     const [post, setPost] = useState(null);
@@ -31,8 +33,8 @@ function PostPage() {
     }
 
     return (
-        <main>
-            <h1>{post.title}</h1>
+        <main className="post-page">
+        <h1>{post.title}</h1>
             <p>{post.category}</p>
             <p>{post.content}</p>
 

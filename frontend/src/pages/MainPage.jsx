@@ -1,21 +1,16 @@
-// import BlogPostCard from "../components/BlogPostCard/blogPostCard";
+import '../styles/main.css';
 
 function MainPage() {
     return (
-        <>
+        <main className="main-page">
+            <h1>MAIN PAGE</h1>
 
-        <h1>MAIN PAGE</h1>
-        
             <div className="introduction">
                 <p>
-                    Anything that comes to mind that's worthy
-                    to post
+                    Anything that comes to mind that's worthy to post
                 </p>
             </div>
-
-            {/* <BlogPostCard /> */}
-
-        </>
+        </main>
     );
 }
 

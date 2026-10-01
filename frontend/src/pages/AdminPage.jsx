@@ -82,11 +82,11 @@ function AdminPage() {
     }
 
     return (
-        <main>
-            <h1>Admin</h1>
+    <main className="admin-page">
+        <h1>Admin</h1>
 
-            <form onSubmit={handleSubmit}>
-                <input
+            <form className="admin-form" onSubmit={handleSubmit}>
+                    <input
                     type="text"
                     placeholder="Title"
                     value={title}
@@ -123,10 +123,10 @@ function AdminPage() {
                                 
             </form>
 
-            <h2>Existing Posts</h2>
+            <h2 className="existing-posts-heading">Existing Posts</h2>
 
             {posts.map((post) => (
-                <div key={post.id}>
+                <div className="admin-post" key={post.id}>
                     <h3>{post.title}</h3>
                     <p>{post.category}</p>
 

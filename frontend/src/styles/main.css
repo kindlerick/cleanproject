@@ -1,18 +1,18 @@
-.about-page {
+.main-page {
     min-height: 500px;
     padding: 5rem 4rem;
 }
 
-.about-page h1 {
+.main-page h1 {
     font-size: 3rem;
     margin-bottom: 2rem;
 }
 
-.about-content {
+.introduction {
     max-width: 700px;
 }
 
-.about-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
+.introduction p {
+    font-size: 1.25rem;
+    line-height: 1.6;
 }

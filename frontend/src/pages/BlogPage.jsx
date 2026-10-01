@@ -34,8 +34,8 @@ function BlogPage() {
 
 
     return (
-        <main>
-            <h1>Blogs</h1>
+        <main className="blog-page">
+        <h1>Blogs</h1>
 
             {posts.map((post) => (
                 <article key={post.id}>
