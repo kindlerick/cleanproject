@@ -6,12 +6,32 @@ import { Link } from "react-router-dom";
 
 function BlogPage() {
     const [posts, setPosts] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
+    
     useEffect(() => {
         getPosts()
-            .then((data) => setPosts(data))
-            .catch((error) => console.error(error));
+            .then((data) => {
+                setPosts(data);
+            })
+            .catch((error) => {
+                console.error(error);
+                setError("Failed to load posts.");
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, []);
+
+    if (loading) {
+        return <p>Loading posts...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
 
     return (
         <main>
@@ -20,7 +40,7 @@ function BlogPage() {
             {posts.map((post) => (
                 <article key={post.id}>
                     <h2>
-                        <Link to={`/blog/${post.slug}`}>
+                        <Link to={`/blogs/${post.slug}`}>
                             {post.title}
                         </Link>
                     </h2>

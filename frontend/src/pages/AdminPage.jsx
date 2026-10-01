@@ -77,7 +77,7 @@ function AdminPage() {
             setContent("");
         } catch (error) {
             console.error(error);
-            alert("Failed to save post");
+            alert(error.message);
         }
     }
 
@@ -91,6 +91,7 @@ function AdminPage() {
                     placeholder="Title"
                     value={title}
                     onChange={(event) => setTitle(event.target.value)}
+                    required
                 />
 
                 <input
@@ -98,6 +99,7 @@ function AdminPage() {
                     placeholder="Slug"
                     value={slug}
                     onChange={(event) => setSlug(event.target.value)}
+                    required
                 />
 
                 <input
@@ -105,12 +107,14 @@ function AdminPage() {
                     placeholder="Category"
                     value={category}
                     onChange={(event) => setCategory(event.target.value)}
+                    required
                 />
 
                 <textarea
                     placeholder="Content"
                     value={content}
                     onChange={(event) => setContent(event.target.value)}
+                    required
                 />
 
                 <button type="submit">

@@ -28,16 +28,28 @@ router.get("/:slug", (req, res) => {
 router.post("/", (req, res) => {
     const { title, slug, category, content } = req.body;
 
-    const result = db.prepare(`
-        INSERT INTO posts (title, slug, category, content)
-        VALUES (?, ?, ?, ?)
-    `).run(title, slug, category, content);
+    try {
+        const result = db.prepare(`
+            INSERT INTO posts (title, slug, category, content)
+            VALUES (?, ?, ?, ?)
+        `).run(title, slug, category, content);
 
-    const newPost = db
-        .prepare("SELECT * FROM posts WHERE id = ?")
-        .get(result.lastInsertRowid);
+        const newPost = db
+            .prepare("SELECT * FROM posts WHERE id = ? ")
+            .get(result.lastInsertRowid);
 
-    res.status(201).json(newPost);
+        res.status(201).json(newPost);
+    } catch (error) {
+        if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
+            return res.status(409).json({
+                message: "Slug already exists"
+            });
+        }
+        console.error(error);
+        res.status(500).json({
+            message: "Failed to creat post"
+        });
+    }
 });
 
 router.put("/:id", (req, res) => {
