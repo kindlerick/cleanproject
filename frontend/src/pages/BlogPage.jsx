@@ -1,8 +1,9 @@
-import "../styles/blog.css";
-
 import { useEffect, useState } from "react";
 import { getPosts } from "/src/services/postsAPI.js";
 import { Link } from "react-router-dom";
+
+import "../styles/blog.css";
+import '../index.css';
 
 function BlogPage() {
     const [posts, setPosts] = useState([]);
@@ -29,7 +30,7 @@ function BlogPage() {
     }
 
     if (error) {
-        return <p>{error}</p>;
+        return <p className="error-message">{error}</p>;
     }
 
 

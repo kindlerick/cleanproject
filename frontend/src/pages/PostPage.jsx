@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getPostBySlug } from "/src/services/postsAPI.js";
 import { Link, useParams } from "react-router-dom";
 
+import '../index.css';
 import '../styles/post.css';
 
 function PostPage() {
@@ -25,11 +26,13 @@ function PostPage() {
     }, [slug]);
 
     if (loading) {
-        return <p>Loading post...</p>;
+        return ( 
+        <p>Loading post...</p>
+    );
     }
 
     if (error) {
-        return <p>{error}</p>;
+        return <p className="error-message">{error}</p>;
     }
 
     return (

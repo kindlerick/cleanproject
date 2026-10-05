@@ -36,3 +36,12 @@ h2,
 h3 {
     color: var(--heading-color);
 }
+
+
+
+
+.error-message {
+    font-size: 1.2rem;
+    color: var(--heading-color);
+    padding: 5rem 4rem;
+}
