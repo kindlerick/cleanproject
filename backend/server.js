@@ -2,8 +2,10 @@ const db = require("./database/database");
 const postsRouter = require("./routes/posts");
 const express = require("express");
 const cors = require("cors");
+const authRouter = require("./routes/auth");
 
 const app = express();
+
 const PORT = 5000;
 
 app.use(cors());
@@ -14,7 +16,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/posts", postsRouter);
+app.use("/api/auth", authRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:5000`);
 });
