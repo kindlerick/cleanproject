@@ -37,3 +37,9 @@
     max-width: 750px;
     line-height: 1.6;
 }
+
+.blog-error {
+    font-size: 1.2rem;
+    color: var(--heading-color);
+    padding: 5rem 0;
+}

@@ -26,3 +26,9 @@
     color: var(--accent-color);
     font-weight: 600;
 }
+
+.post-error {
+    font-size: 1.2rem;
+    color: var(--heading-color);
+    padding: 5rem 0;
+}
