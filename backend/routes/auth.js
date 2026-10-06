@@ -28,9 +28,41 @@ router.post("/login", (req, res) => {
         });
     }
 
+    req.session.adminId = admin.id;
+
     res.json({
         message: "Login successful"
     });
 });
 
+router.get("/me", (req, res) => {
+    if (!req.session.adminId) {
+        return res.status(401).json({
+            message: "Not logged in"
+        });
+    }
+
+    res.json({
+        message: "You are logged in",
+        adminId: req.session.adminId
+    });
+});
+
+router.post("/logout", (req, res) => {
+    req.session.destroy((error) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({
+                message: "Failed to log out"
+            });
+        }
+
+        res.json({
+            message: "Logout successful"
+        });
+    });
+});
+
 module.exports = router;
+
+

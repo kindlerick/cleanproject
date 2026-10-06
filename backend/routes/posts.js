@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const db = require("../database/database");
+const requireAuth = require("../middleware/requireAuth");
 
 router.get("/", (req, res) => {
     const posts = db
@@ -25,7 +26,7 @@ router.get("/:slug", (req, res) => {
     res.json(post);
 });
 
-router.post("/", (req, res) => {
+router.post("/", requireAuth, (req, res) => {
     const { title, slug, category, content } = req.body;
 
     try {
@@ -52,7 +53,7 @@ router.post("/", (req, res) => {
     }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", requireAuth, (req, res) => {
     const { id } = req.params;
     const { title, slug, category, content } = req.body;
 
@@ -73,7 +74,7 @@ router.put("/:id", (req, res) => {
     res.json(updatedPost);
 }); 
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", requireAuth, (req, res) => {
     const { id } = req.params;
 
     const result = db
