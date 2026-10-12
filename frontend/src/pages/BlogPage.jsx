@@ -26,11 +26,19 @@ function BlogPage() {
     }, []);
 
     if (loading) {
-        return <p>Loading posts...</p>;
+        return (
+            <main class="blog-page">
+                <p>Loading posts...</p>
+            </main>
+        )
     }
 
     if (error) {
-        return <p className="error-message">{error}</p>;
+        return (
+            <main class="blog-page">
+                <p className="error-message">{error}</p>
+            </main>
+        );
     }
 
 

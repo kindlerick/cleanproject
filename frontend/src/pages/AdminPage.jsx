@@ -1,5 +1,7 @@
 import "../styles/admin.css";
 
+import { Navigate } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 
 import {
@@ -22,6 +24,21 @@ function AdminPage() {
 
     const [editingPost, setEditingPost] = useState(null);
 
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+    useEffect(() => {
+    fetch("http://localhost:5000/api/auth/me", {
+        credentials: "include"
+    })
+        .then((response) => {
+            setIsAuthenticated(response.ok);
+        })
+        .catch((error) => {
+            console.error(error);
+            setIsAuthenticated(false);
+        });
+    }, []);
+
 
     useEffect(() => {
     getPosts()
@@ -41,6 +58,20 @@ function AdminPage() {
         } catch (error) {
             console.error(error);
             alert("Failed to delete post");
+        }
+    }
+
+    async function handleLogout() {
+        const response = await fetch(
+            "http://localhost:5000/api/auth/logout",
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+        if (response.ok) {
+            setIsAuthenticated(false);
         }
     }
 
@@ -81,9 +112,25 @@ function AdminPage() {
         }
     }
 
+    if (isAuthenticated === null) {
+        return (
+            <main className="admin-page">
+                <p>Checking authentication...</p>
+            </main>
+        );
+    }
+
+    if (!isAuthenticated) {
+        return <Navigate to="/login" replace />;
+    }
+
     return (
     <main className="admin-page">
         <h1>Admin</h1>
+
+        <button onClick={handleLogout}>
+            Log out
+        </button>
 
             <form className="admin-form" onSubmit={handleSubmit}>
                     <input
