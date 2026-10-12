@@ -26,13 +26,19 @@ function PostPage() {
     }, [slug]);
 
     if (loading) {
-        return ( 
-        <p>Loading post...</p>
-    );
+        return
+         (  <main class="post-page">
+                <p>Loading post...</p>
+            </main>
+         )
     }
 
     if (error) {
-        return <p className="error-message">{error}</p>;
+        return (
+        <main class="post-page">
+            <p className="error-message">{error}</p>
+        </main>
+        )
     }
 
     return (
