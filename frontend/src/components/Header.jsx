@@ -6,6 +6,8 @@ function Header() {
 
     const location = useLocation();
 
+    const isBlogPost = location.pathname.startsWith("/blogs/");
+
     return (
         <header id="main-header">
             <nav className="nav-element-bar">
@@ -17,7 +19,7 @@ function Header() {
                         </li>
                     )}
 
-                    {location.pathname !== "/blogs" && (
+                    {!isBlogPost && location.pathname !== "/blogs" && (
                         <li className="nav-element">
                             <Link to="/blogs">BLOGS</Link>
                         </li>
@@ -39,11 +41,11 @@ function Header() {
                         <a id="register">REGISTER</a>
                     </li> */}
 
-                    {location.pathname !== "/admin" && (
+                    {/* {location.pathname !== "/admin" && (
                         <li className="nav-element">
                             <Link to="/admin">ADMIN</Link>
                         </li>
-                    )}
+                    )} */}
                 </ol>
 
             </nav>

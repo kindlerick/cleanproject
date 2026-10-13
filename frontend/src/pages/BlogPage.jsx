@@ -27,7 +27,7 @@ function BlogPage() {
 
     if (loading) {
         return (
-            <main class="blog-page">
+            <main className="blog-page">
                 <p>Loading posts...</p>
             </main>
         )
@@ -35,7 +35,7 @@ function BlogPage() {
 
     if (error) {
         return (
-            <main class="blog-page">
+            <main className="blog-page">
                 <p className="error-message">{error}</p>
             </main>
         );
