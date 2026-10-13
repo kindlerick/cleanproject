@@ -31,6 +31,7 @@ export async function createPost(post) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(post),
+        credentials: "include"
     });
 
     if (!response.ok) {
@@ -48,6 +49,7 @@ export async function updatePost(id, post) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(post),
+        credentials: "include"
     });
 
     if (!response.ok) {
@@ -60,6 +62,7 @@ export async function updatePost(id, post) {
 export async function deletePost(id) {
     const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
+        credentials: "include"
     });
 
     if (!response.ok) {

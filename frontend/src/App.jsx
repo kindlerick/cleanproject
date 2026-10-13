@@ -19,9 +19,6 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/blogs" element={<BlogPage />} /> 
-        {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/register" element={<Register />} /> */}
-        {/* <Route path="/profile" element={<Profile />} /> */}
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/blogs/:slug" element={<PostPage />} />
