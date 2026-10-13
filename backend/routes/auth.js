@@ -28,10 +28,26 @@ router.post("/login", (req, res) => {
         });
     }
 
-    req.session.adminId = admin.id;
+    req.session.regenerate((error) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({
+                message: "Login failed"
+            });
+        }
 
-    res.json({
-        message: "Login successful"
+    req.session.adminId = admin.id; 
+
+        req.session.save((error) => {
+            if (error) {
+                console.error(error);
+                return res.status(500).json({
+                    message: "Login failed"
+                });
+            }
+
+            res.json({ message: "Login successful" });
+        });
     });
 });
 
